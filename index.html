@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kafe Kami</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<style>
+    #map {
+        height: 300px;
+    }
+</style>
+
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-white shadow-lg z-50">
+        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+            <h1 class="text-2xl font-semibold text-green-600">RAMLANIS COFFEE SHOP</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#home" class="text-gray-700 hover:text-green-500">Beranda</a></li>
+                    <li><a href="#menu" class="text-gray-700 hover:text-green-500">Menu</a></li>
+                    <li><a href="#gallery" class="text-gray-700 hover:text-green-500">Galeri</a></li>
+                    <li><a href="#contact" class="text-gray-700 hover:text-green-500">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home"
+        style="background: url(./ramlanis.jpg); background-position: center; background-repeat: repeat; background-size: cover;"
+        class="hero h-screen flex justify-center items-center text-center py-32">
+        <div class="hero-content ">
+            <h2 class="text-4xl font-bold text-white">Selamat datang di Kafe Kami</h2>
+            <p class="text-lg text-white">Tempat yang nyaman untuk bersantai dan menikmati kopi terbaik</p>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-semibold text-center text-gray-800 mb-8">Menu Kami</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Menu Item 1 -->
+                <div class="menu-item bg-white p-6 rounded-lg shadow-lg text-center" data-name="Extra Joss Susu"
+                    data-price="10000">
+                    <img src="estrajos.jpg" alt="Extra Joss Susu" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Extra Joss Susu</h3>
+                    <p class="text-gray-600">Rp 10,000</p>
+                    <select class="menu-select mt-4 p-2 w-full border border-gray-300 rounded">
+                        <option value="">Pilih Jumlah</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+
+                <!-- Menu Item 2 -->
+                <div class="menu-item bg-white p-6 rounded-lg shadow-lg text-center" data-name="Teh Susu"
+                    data-price="10000">
+                    <img src="Cuplikan layar 2024-11-19 070404.png" alt="Teh Susu"
+                        class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Teh Susu</h3>
+                    <p class="text-gray-600">Rp 10,000</p>
+                    <select class="menu-select mt-4 p-2 w-full border border-gray-300 rounded">
+                        <option value="">Pilih Jumlah</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+
+                <!-- Menu Item 3 -->
+                <div class="menu-item bg-white p-6 rounded-lg shadow-lg text-center" data-name="Kopi Susu"
+                    data-price="10000">
+                    <img src="Cuplikan layar 2024-11-19 071117.png" alt="Kopi Susu"
+                        class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Kopi Susu</h3>
+                    <p class="text-gray-600">Rp 10,000</p>
+                    <select class="menu-select mt-4 p-2 w-full border border-gray-300 rounded">
+                        <option value="">Pilih Jumlah</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+
+                <!-- Menu Item 4 -->
+                <div class="menu-item bg-white p-6 rounded-lg shadow-lg text-center" data-name="Hot/Es Cappucino"
+                    data-price="15000">
+                    <img src="Cuplikan layar 2024-11-19 071801.png" alt="Hot/Es Cappucino"
+                        class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Hot/Es Cappucino</h3>
+                    <p class="text-gray-600">Rp 15,000</p>
+                    <select class="menu-select mt-4 p-2 w-full border border-gray-300 rounded">
+                        <option value="">Pilih Jumlah</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+
+                <!-- Menu Item 5 -->
+                <div class="menu-item bg-white p-6 rounded-lg shadow-lg text-center" data-name="Hot/Es Coklat"
+                    data-price="20000">
+                    <img src="Cuplikan layar 2024-11-19 072458.png" alt="Hot/Es Coklat"
+                        class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Hot/Es Coklat</h3>
+                    <p class="text-gray-600">Rp 20,000</p>
+                    <select class="menu-select mt-4 p-2 w-full border border-gray-300 rounded">
+                        <option value="">Pilih Jumlah</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Snacks Section -->
+            <h2 class="text-3xl font-semibold text-center text-gray-800 mb-8 mt-16">Cemilan</h2>
+
+            <div class="flex justify-center items-center h-screen grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Snack Item 1 -->
+                <div class="menu-item bg-white p-6 rounded-lg shadow-lg text-center" data-name="Ubi Goreng Krispy"
+                    data-price="15000">
+                    <img src="Cuplikan layar 2024-11-19 073232.png" alt="Ubi Goreng Krispy"
+                        class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Ubi Goreng Krispy</h3>
+                    <p class="text-gray-600">Rp 15,000</p>
+                    <select class="menu-select mt-4 p-2 w-full border border-gray-300 rounded">
+                        <option value="">Pilih Jumlah</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+
+                <!-- Snack Item 2 -->
+                <div class="menu-item bg-white p-6 rounded-lg shadow-lg text-center" data-name="Pisang Goreng Krenyes"
+                    data-price="15000">
+                    <img src="Cuplikan layar 2024-11-19 073832.png" alt="Pisang Goreng Krenyes"
+                        class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Pisang Goreng Krenyes</h3>
+                    <p class="text-gray-600">Rp 15,000</p>
+                    <select class="menu-select mt-4 p-2 w-full border border-gray-300 rounded">
+                        <option value="">Pilih Jumlah</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="text-center mt-8">
+                <button id="add-to-order" class="bg-green-500 text-white py-2 px-6 rounded-lg hover:bg-green-600">Tambah
+                    ke
+                    Pesanan</button>
+            </div>
+
+            <div id="order-summary" class="mt-8 text-center">
+                <h3 class="text-2xl font-semibold text-gray-800">Pesanan Anda:</h3>
+                <ul id="order-list" class="list-disc text-gray-700 mt-4"></ul>
+                <p id="total-price" class="text-lg text-gray-800 mt-2">Total: Rp 0</p>
+            </div>
+
+            <a id="whatsapp-button" href="#" target="_blank" class="block text-center mt-6">
+                <button class="bg-green-500 text-white py-2 px-6 rounded-lg hover:bg-green-600">Share Order via
+                    WhatsApp</button>
+            </a>
+        </div>
+    </section>
+
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-semibold text-center text-gray-800 mb-8">Galeri</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <img src="Cuplikan layar 2024-11-19 150415.png" alt="Kafe 1"
+                    class="w-full h-64 object-cover rounded-lg shadow-lg">
+                <img src="Cuplikan layar 2024-11-19 150402.png" alt="Kafe 2"
+                    class="w-full h-64 object-cover rounded-lg shadow-lg">
+                <img src="Cuplikan layar 2024-11-19 150321.png" alt="Kafe 3"
+                    class="w-full h-64 object-cover rounded-lg shadow-lg">
+                <img src="Cuplikan layar 2024-11-19 150439.png" alt="Kafe 4"
+                    class="w-full h-64 object-cover rounded-lg shadow-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-8">Kontak Kami</h2>
+            <p class="text-lg text-gray-700">Alamat: Jl. Jendral Ahmad Yani</p>
+            <p class="text-lg text-gray-700">Instagram: @ramlanis_coffeshop</p>
+            <p class="text-lg text-gray-700">Koordinat Lokasi: <strong>Latitude: -6.1194334, Longitude:
+                    106.8087602</strong></p>
+        </div>
+    </section>
+
+    <section id="alamat" class="bg-gray-100">
+        <div id="peta" class="w-full h-64"></div>
+    </section>
+    <br><br>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Ramlanis Coffee Shop. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const addToOrderButton = document.getElementById('add-to-order');
+            const orderList = document.getElementById('order-list');
+            const totalPrice = document.getElementById('total-price');
+            const whatsappButton = document.getElementById('whatsapp-button');
+
+            addToOrderButton.addEventListener('click', () => {
+                let total = 0;
+                let orderDetails = '';  // Initialize the order details message
+                orderList.innerHTML = '';  // Clear previous order
+
+                // Check each item and add to order if selected
+                const items = document.querySelectorAll('.menu-item');
+                items.forEach(item => {
+                    const quantity = parseInt(item.querySelector('.menu-select').value);
+                    if (quantity > 0) {
+                        const itemName = item.getAttribute('data-name');
+                        const price = parseInt(item.getAttribute('data-price'));
+                        const itemTotal = price * quantity;
+                        total += itemTotal;
+
+                        // Add to order list
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `${itemName}: Rp ${itemTotal.toLocaleString()} (x${quantity})`;
+                        orderList.appendChild(listItem);
+
+                        // Prepare the message for WhatsApp
+                        orderDetails += `${itemName}: Rp ${itemTotal.toLocaleString()} (x${quantity})\n`;
+                    }
+                });
+
+                // Update total price
+                totalPrice.textContent = `Total: Rp ${total.toLocaleString()}`;
+
+                // Create WhatsApp message
+                const whatsappMessage = `Saya Ingin Memesan: ${orderDetails}Total: Rp ${total.toLocaleString()}`;
+
+                // Create WhatsApp URL
+                const whatsappUrl = `https://wa.me/6285825416759?text=${encodeURIComponent(whatsappMessage)}`;
+
+                // Update the WhatsApp button's link
+                whatsappButton.href = whatsappUrl;
+            });
+        });
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var map = L.map('peta').setView([-6.117045, 120.4608217], 18);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            const umkmData = {
+                name: "Cafe Ramlanis",
+                rating: "5.0",
+                reviews: 1,
+                category: "Kedai Kopi",
+                buka: "Buka · Tutup pukul 22.04 🔻",
+                alamat: "Kampus ITSBM Selayar Jl. RA. Kartini No. 17 Benteng",
+                phone: "+62 815-4591-6913",
+                coords: [-6.117045, 120.4608217],
+            };
+
+            const marker = L.marker(umkmData.coords).addTo(map);
+
+            // Menambahkan tooltip permanen pada marker
+            marker.bindTooltip(umkmData.name, {
+                permanent: true,
+                direction: "top",
+                className: "marker-tooltip",
+            });
+
+            marker.bindPopup(`
+                <div class="popup-container">
+                    <div class="popup-header">${umkmData.name}</div>
+                    <div class="popup-rating">⭐ ${umkmData.rating} <span>(${umkmData.reviews})</span></div>
+                    <div class="popup-category">${umkmData.category}</div>
+                    <a href=""
+                    <div class="popup-address"><i class="fas fa-map-marker-alt"></i> ${umkmData.alamat}</div>
+                    <div class="popup-contact"><i class="fas fa-phone-alt"></i> ${umkmData.phone}</div>
+                </div>
+            `);
+
+            fetch("./jalanBentengAnjay.geojson")
+                .then((response) => response.json())
+                .then((geojsonData) => {
+                    L.geoJSON(geojsonData, {
+                        style: {
+                            color: "#000",
+                            weight: 3,
+                            opacity: 1,
+                        },
+                    }).addTo(map);
+                })
+                .catch((error) =>
+                    console.error("Error loading jalan GeoJSON:", error)
+                );
+
+            fetch("./kecamatanBenteng.geojson")
+                .then((response) => response.json())
+                .then((geojsonData) => {
+                    L.geoJSON(geojsonData, {
+                        style: {
+                            color: "#000",
+                            weight: 1.5,
+                            opacity: 0.8,
+                            fillColor: "#000",
+                            fillOpacity: 0.5,
+                        },
+                    }).addTo(map);
+                })
+                .catch((error) =>
+                    console.error("Error loading kecamatanBenteng GeoJSON:", error)
+                );
+        });
+    </script>
+
+
+
+</body>
+
+</html>
